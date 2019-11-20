@@ -1,0 +1,33 @@
+version: "3"
+
+services:
+  db:
+    image: mysql:5.5
+    volumes:
+      - ./log/db/mysql:/var/log/mysql
+      - ./db/loging.cnf:/etc/mysql/conf.d/loging.cnf
+      - ./db/kaltura.cnf:/etc/mysql/conf.d/kaltura.cnf
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: db_kaltura
+    env_file: .env
+
+  kaltura:
+    build:
+      context: kaltura
+    networks:
+      default:
+        aliases:
+          - kaltura-web.local
+    volumes:
+      - ./log/kaltura:/opt/kaltura/log
+    links:
+      - db
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 4567:8080

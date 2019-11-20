@@ -1,0 +1,14 @@
+# URL: http://kaltura.org/
+[Kaltura]
+name = Kaltura Server
+baseurl = http://installrepo.kaltura.org/releases/latest/$releasever/RPMS/$basearch/
+gpgkey = http://installrepo.kaltura.org/releases/RPM-GPG-KEY-kaltura-curr
+gpgcheck = 1
+enabled = 1
+
+[Kaltura-noarch]
+name = Kaltura Server arch independent
+baseurl = http://installrepo.kaltura.org/releases/latest/$releasever/RPMS/noarch
+gpgkey = http://installrepo.kaltura.org/releases/RPM-GPG-KEY-kaltura-curr
+gpgcheck = 1
+enabled = 1
